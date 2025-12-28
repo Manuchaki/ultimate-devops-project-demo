@@ -78,6 +78,7 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
           with:
+            ref: main
             token: ${{ secrets.GITHUB_TOKEN }}
 
         - name: Update Kubernetes Deployment
@@ -90,4 +91,4 @@ jobs:
                git config --global user.email "manoj.aluri@siu.edu"
                git add kubernetes/productcatalog/deploy.yaml
                git commit -m "[CI]: Update Product Catalog image tag"
-               git push
+               git push origin HEAD:main -f
